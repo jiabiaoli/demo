@@ -36,7 +36,7 @@ public class ValidApplication {
         }
 
         @PutMapping("/user")
-        public User  put(@Validated(User.UpdateValid.class) User user){
+        public User  update(@Validated(User.UpdateValid.class) User user){
             return user;
         }
     }
