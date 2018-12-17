@@ -6,6 +6,7 @@
     <modules>
         <module>unified</module>
 		<module>valid</module>
+		<module>jsonview</module>
 	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
