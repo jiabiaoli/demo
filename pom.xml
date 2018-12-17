@@ -5,7 +5,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>unified</module>
-    </modules>
+		<module>valid</module>
+	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
