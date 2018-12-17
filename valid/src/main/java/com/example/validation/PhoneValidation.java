@@ -27,9 +27,6 @@ public class PhoneValidation implements ConstraintValidator<PhoneAnnotation, Str
         if(user==null){
             return true;
         }
-        if(!value.equals(user.getPhone())){
-            return true;
-        }
         return false;
     }
 }
