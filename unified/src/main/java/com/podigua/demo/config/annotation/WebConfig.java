@@ -18,5 +18,4 @@ public class WebConfig implements WebMvcConfigurer  {
         converters.add(0, new MappingJackson2HttpMessageConverter());
         converters.add(1, new ResourceHttpMessageConverter());
     }
-	
 }

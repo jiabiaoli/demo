@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 
 /**
+ * @author jiabiaoli
  * @auther jiabiaoli@boco.com.cn
  * @date 2018/12/3 15:47
  */
@@ -22,17 +23,18 @@ public class DemoController {
     public String echo(@PathVariable("name") String name){
         return "hello:"+name;
     }
+    @GetMapping("/long")
+    public Long longValue(){
+        return 1L;
+    }
     @GetMapping("/user/{id}")
     public User getUserById(@PathVariable("id") Long id){
-        User user=new User();
-        user.setId(id);
-        user.setName("Lucy");
-        user.setAge(18);
+        User user=new User(id,"Lucy",18);
         return user;
     }
     @GetMapping("/download")
     public ResponseEntity<FileSystemResource> download() {
-        File file = new File("d:/1.jpg");
+        File file = new File("/Users/jiabiaoli/Desktop/1.jpg");
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
         try {

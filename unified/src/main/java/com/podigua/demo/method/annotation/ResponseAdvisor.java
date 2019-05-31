@@ -12,10 +12,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 
 /**
+ * @author jiabiaoli
  * @auther jiabiaoli@boco.com.cn
  * @date 2018/12/3 16:13
  */
-@ControllerAdvice
+@ControllerAdvice()
 public class ResponseAdvisor implements ResponseBodyAdvice<Object> {
 
     /**
