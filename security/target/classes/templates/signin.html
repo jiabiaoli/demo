@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:include="core/header :: header"></div>
+    <meta charset="UTF-8"/>
+    <title>用户登录</title>
+</head>
+<style>
+    body{
+        overflow:hidden;
+        font-family:'微软雅黑';
+    }
+    img{
+        width:40px;
+        height:40px;
+        float:left;
+        margin:4px 15px 0;
+    }
+    .ivu-row{
+
+        padding:100px 0;
+    }
+    .layout{
+        height:50px;
+        line-height:50px;
+        font-size:20px;
+    }
+    .layout-logo{
+        float:left;
+    }
+    .layout-header{
+        overflow:hidden;
+    }
+    .font{
+        font-size:22px;
+        color:#fff;
+    }
+</style>
+<script>
+    window.onload=function(){
+        document.onkeydown = function(e){
+            let ev = document.all ? window.event : e;
+            if(ev.keyCode==13) {
+                document.getElementById("loginForm").submit();
+            }
+        };
+    }
+
+</script>
+<body>
+<div id="app">
+    <!-- <img th:src="@{/image/5.jpg}" alt="" /> -->
+    <div class="layout">
+        <div class="layout-header">
+            <!--<img th:src="@{/image/logo2.png}" alt="" />
+            -->
+            <span class="layout-logo">用户登录页</span>
+        </div>
+    </div>
+    <!--th:style="'background:url(' + @{/image/login_bg.jpg}+ ');'"-->
+    <row >
+        <i-col span="10" push="5" style="margin-top:5%">
+            <div  :shadow="true" :bordered="false">
+                <p class="font"> ，</p>
+                <p class="font" style="margin-top:20px"></p>
+            </div>
+        </i-col>
+        <i-col span="5" push="5">
+            <card  :shadow="true" :bordered="false">
+                <p slot="title">用户登录</p>
+                <i-form id="loginForm" th:action="@{/auth/login}" ref="formInline" :model="formInline" :rules="ruleInline" method="POST">
+                    <form-item prop="username">
+                        <i-input element-id="username" type="text" v-model="formInline.username" name="username" placeholder="Username">
+                             <icon type="ios-person-outline" slot="prepend"></icon>
+                        </i-input>
+                    </form-item>
+                    <form-item prop="password">
+                        <i-input element-id="password" type="password" v-model="formInline.password" name="password" placeholder="Password">
+                            <icon type="ios-lock-outline" slot="prepend"></icon>
+                        </i-input>
+                        <div id="message" style="color:red;" th:text="${session?.SPRING_SECURITY_LAST_EXCEPTION?.message}"></div>
+                    </form-item>
+                    <form-item>
+                        <i-button id="login" type="primary"  @click="handleSubmit('formInline')" @keyup.enter.native="handleSubmit('formInline')" long>登录</i-button>
+                    </form-item>
+                </i-form>
+            </card>
+        </i-col>
+    </row>
+</div>
+<script>
+
+    var Main = {
+        data () {
+            return {
+                formInline: {
+                    username: '',
+                    password: ''
+                },
+                ruleInline: {
+                    username: [
+                        { required: true, message: '请输入登录名', trigger: 'blur' }
+                    ],
+                    password: [
+                        { required: true, message: '请输入密码', trigger: 'blur' }
+                    ]
+                },
+            }
+        },
+        methods:{
+            handleSubmit(name) {
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        document.getElementById("loginForm").submit();
+                    } else {
+                    }
+                })
+            }
+        },
+
+    }
+
+    var Component = Vue.extend(Main)
+    new Component().$mount('#app')
+</script>
+</body>
+</html>
