@@ -8,6 +8,7 @@
 		<module>valid</module>
 		<module>jsonview</module>
 		<module>security</module>
+		<module>diff</module>
 	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
