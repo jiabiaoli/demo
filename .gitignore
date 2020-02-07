@@ -27,6 +27,7 @@ HELP.md
 
 ### VS Code ###
 .vscode/
-auth-admin/target/
-auth-client/target/
-auth-server/target/
+jsonview/target/
+security/target/
+unified/target/
+valid/target/
